@@ -33,17 +33,15 @@ class AssessmentService:
     
     def _load_json_data(self, filename):
         """Load JSON data from the backend/data directory, regardless of working directory."""
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        data_dir = os.path.normpath(os.path.join(base_dir, '..', 'data'))
+        # Find the project root (where main.py is)
+        root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        data_dir = os.path.join(root_dir, "backend", "data")
         file_path = os.path.join(data_dir, filename)
         if os.path.exists(file_path):
             with open(file_path, 'r') as f:
                 return json.load(f)
         print(f"Warning: Could not find data file {file_path}")
         return {}
-
-    # ... (rest of your class code remains unchanged)
-    # All other methods (search_symptoms, get_symptom_by_name, etc.) stay as they are.
 
         
         query = query.lower()
