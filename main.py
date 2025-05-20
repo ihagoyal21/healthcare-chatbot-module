@@ -18,12 +18,17 @@ app.register_blueprint(main_blueprint)
 def index():
     return send_from_directory(app.static_folder, "index.html")
 
-# Serve static assets (CSS, JS, images, etc.)
+# Serve static assets (CSS, JS, images, etc.), fallback to index.html for SPA routes
 @app.route("/<path:path>")
 def static_proxy(path):
-    return send_from_directory(app.static_folder, path)
+    file_path = os.path.join(app.static_folder, path)
+    if os.path.isfile(file_path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        # For any unknown route, serve index.html (for React/Vue/SPA routing)
+        return send_from_directory(app.static_folder, "index.html")
 
-# (Optional) API info route at /api
+# API info route at /api (not at /)
 @app.route("/api")
 def api_info():
     return jsonify({
