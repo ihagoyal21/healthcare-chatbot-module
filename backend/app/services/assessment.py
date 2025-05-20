@@ -9,16 +9,15 @@ class AssessmentService:
     
     def __init__(self):
         """Initialize the assessment service with medical data"""
-        self.symptoms = self._load_json_data('data/symptoms.json')
-        self.conditions = self._load_json_data('data/conditions.json')
-        self.questions = self._load_json_data('data/questions.json')
-        self.body_regions = self._load_json_data('data/body_regions.json')
-        self.symptom_relationships = self._load_json_data('data/symptom_relationships.json')
+        self.symptoms = self._load_json_data('symptoms.json')
+        self.conditions = self._load_json_data('conditions.json')
+        self.questions = self._load_json_data('questions.json')
+        self.body_regions = self._load_json_data('body_regions.json')
+        self.symptom_relationships = self._load_json_data('symptom_relationships.json')
         
         # Cache for frequently accessed data
         self._symptom_name_to_id_map = {s['name'].lower(): s['id'] for s in self.symptoms if 'name' in s and 'id' in s}
         self._symptom_id_to_obj_map = {s['id']: s for s in self.symptoms if 'id' in s}
-        
         # Create a mapping of symptom names to question flows for faster lookup
         self._symptom_to_question_flow = {}
         for symptom_key, flow in self.questions.items():
@@ -32,18 +31,20 @@ class AssessmentService:
         # Track previously asked questions by ID to prevent repetition
         self._asked_questions_ids = set()
     
-    def _load_json_data(self, file_path):
-        """Load JSON data from a file"""
+    def _load_json_data(self, filename):
+        """Load JSON data from the backend/data directory, regardless of working directory."""
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        data_dir = os.path.normpath(os.path.join(base_dir, '..', 'data'))
+        file_path = os.path.join(data_dir, filename)
         if os.path.exists(file_path):
             with open(file_path, 'r') as f:
                 return json.load(f)
         print(f"Warning: Could not find data file {file_path}")
         return {}
-    
-    def search_symptoms(self, query):
-        """Search for symptoms matching the query with improved matching"""
-        if not query or len(query) < 2:
-            return []
+
+    # ... (rest of your class code remains unchanged)
+    # All other methods (search_symptoms, get_symptom_by_name, etc.) stay as they are.
+
         
         query = query.lower()
         exact_matches = []
