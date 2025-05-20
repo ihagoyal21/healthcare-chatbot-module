@@ -32,16 +32,16 @@ class AssessmentService:
         self._asked_questions_ids = set()
     
     def _load_json_data(self, filename):
-        """Load JSON data from the backend/data directory, regardless of working directory."""
-        # Find the project root (where main.py is)
-        root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        data_dir = os.path.join(root_dir, "backend", "data")
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        data_dir = os.path.join(base_dir, 'data')
         file_path = os.path.join(data_dir, filename)
         if os.path.exists(file_path):
             with open(file_path, 'r') as f:
                 return json.load(f)
         print(f"Warning: Could not find data file {file_path}")
         return {}
+
+
 
         
         query = query.lower()
