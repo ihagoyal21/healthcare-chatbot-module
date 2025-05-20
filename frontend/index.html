@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-content">
+                <h1>Health Assistant</h1>
+                <button id="startOverButton" class="start-over-button" title="Start a new assessment">
+                    <i class="fas fa-redo-alt"></i> Start Over
+                </button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </header>
+        
+        <div id="chatMessages" class="chat-messages"></div>
+        
+        <div id="optionButtons" class="option-buttons"></div>
+        
+        <div class="chat-input" id="chatInputArea">
+            <input type="text" id="userInput" placeholder="Type here...">
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        
+        <div class="disclaimer">
+            This is not a medical diagnosis. Always consult with a healthcare professional for medical advice.
+        </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Analyzing your symptoms...</p>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

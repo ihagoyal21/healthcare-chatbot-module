@@ -1,0 +1,1096 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    position: relative;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: white;
+    padding: 18px 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Header content with flex layout for title and start over button */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chat-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Start Over Button Styling */
+.start-over-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.start-over-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-over-button i {
+    font-size: 1rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff, #e3f2fd);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar.progress-low {
+    background: linear-gradient(90deg, #ffffff, #e3f2fd);
+}
+
+.progress-bar.progress-medium {
+    background: linear-gradient(90deg, #e3f2fd, #bbdefb);
+}
+
+.progress-bar.progress-high {
+    background: linear-gradient(90deg, #bbdefb, #90caf9);
+}
+
+/* Improved chat messages area */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    padding-bottom: 120px; /* Increased to avoid content being hidden */
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    background-color: #fafbfc;
+    background-image: 
+        radial-gradient(circle at 25px 25px, rgba(200, 227, 255, 0.2) 2px, transparent 0),
+        radial-gradient(circle at 75px 75px, rgba(200, 227, 255, 0.2) 2px, transparent 0);
+    background-size: 100px 100px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    margin-bottom: 15px;
+    border-radius: 18px;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message-entering {
+    animation: messageEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes messageEnter {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+    border-left: 3px solid #1a73e8;
+}
+
+.user-message {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+    border-right: 3px solid #0d47a1;
+}
+
+.message-timestamp {
+    font-size: 0.7rem;
+    color: #999;
+    position: absolute;
+    bottom: -18px;
+    right: 10px;
+}
+
+/* Typing indicator - fixed positioning */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    border-radius: 18px;
+    padding: 12px 16px;
+    margin-bottom: 15px;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #1a73e8;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation: pulse 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation: pulse 1s infinite 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation: pulse 1s infinite 0.4s;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.4; transform: scale(1); }
+}
+
+/* Enhanced chat input */
+.chat-input {
+    display: flex;
+    padding: 12px 15px;
+    border-top: 1px solid #eee;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 18px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#userInput:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+#sendButton {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    margin-left: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sendButton:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading indicator - fixed positioning inside chat container */
+#loadingIndicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    text-align: center;
+    display: none;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1a73e8;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced option buttons */
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 15px;
+    justify-content: center;
+    background-color: white;
+    position: sticky;
+    bottom: 60px;
+    z-index: 40;
+    border-top: 1px solid #f0f0f0;
+    max-height: 40vh; /* Limit height and enable scrolling */
+    overflow-y: auto;
+}
+
+.option-button {
+    background-color: white;
+    color: #1a73e8;
+    border: 1px solid #1a73e8;
+    border-radius: 20px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: optionAppear 0.5s forwards;
+}
+
+@keyframes optionAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option-button:hover {
+    background-color: #e3f2fd;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.option-button.selected {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.option-button.done-button {
+    background-color: #1a73e8;
+    color: white;
+    font-weight: 500;
+    padding: 10px 24px;
+}
+
+/* Start New Assessment button in report */
+.start-new-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.start-new-button:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fixed disclaimer positioning */
+.disclaimer {
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    position: relative;
+    width: 100%;
+    z-index: 45;
+}
+
+/* Enhanced report container */
+.report-container {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.report-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.report-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    position: relative;
+}
+
+.report-header:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #1a73e8;
+}
+
+.report-header h2 {
+    color: #1a73e8;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.report-header p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.report-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.report-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.report-section h3 {
+    color: #1a73e8;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.report-section p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.report-list {
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.report-list li {
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.2s;
+}
+
+.report-list li:hover {
+    transform: translateX(5px);
+    background-color: #f0f7ff;
+}
+
+.likelihood-indicator {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    margin-right: 10px;
+    font-weight: 500;
+    min-width: 90px;
+    text-align: center;
+}
+
+.likelihood-indicator.high {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+.likelihood-indicator.medium {
+    background-color: #fef7e0;
+    color: #b06000;
+}
+
+.likelihood-indicator.low {
+    background-color: #fce8e6;
+    color: #c5221f;
+}
+
+.alert-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.expand-button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #1a73e8;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+}
+
+.condition-details {
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #f0f7ff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Consultation section */
+.consult-section {
+    background-color: #f8f9fa;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.consult-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.consult-option {
+    flex: 1;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+.consult-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.consult-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #1a73e8;
+}
+
+.consult-option h4 {
+    color: #1a73e8;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.consult-option p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.consult-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.consult-button:hover {
+    background-color: #0d47a1;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Report actions */
+.report-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.report-action-button {
+    background-color: #f1f3f4;
+    color: #1a73e8;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.report-action-button:hover {
+    background-color: #e3f2fd;
+    transform: translateY(-2px);
+}
+
+/* Specialists section */
+.specialists-section {
+    background-color: #f0f7ff;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.specialists-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.specialist-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+.specialist-item:hover {
+    transform: translateX(5px);
+}
+
+.relevance-indicator {
+    height: 4px;
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.relevance-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #1a73e8, #90caf9);
+    border-radius: 2px;
+}
+
+.specialist-item h4 {
+    color: #1a73e8;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.specialist-item p {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.find-specialist-button {
+    align-self: flex-start;
+    background-color: transparent;
+    color: #1a73e8;
+    border: 1px solid #1a73e8;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+}
+
+.find-specialist-button:hover {
+    background-color: #e3f2fd;
+}
+
+/* Symptom search enhancements - FIXED positioning */
+.symptom-search-container {
+    position: relative;
+    flex: 1;
+}
+
+/* Improved symptom search results */
+.symptom-result {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.symptom-result:hover, .symptom-result.active {
+    background-color: #f0f7ff;
+    padding-left: 20px;
+}
+
+.symptom-result .symptom-name {
+    font-weight: 500;
+    color: #1a73e8;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.symptom-result .symptom-name strong {
+    font-weight: 700;
+    background-color: rgba(26, 115, 232, 0.1);
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.symptom-description {
+    font-size: 0.85rem;
+    color: #666;
+    display: block;
+}
+
+.no-results {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Fixed symptom search results positioning */
+.symptom-search-results {
+    position: absolute;
+    bottom: 100%; /* Position above the input instead of below */
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 8px;
+}
+
+/* Improved dropdown styling */
+.select-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.select-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.option-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #1a73e8;
+    border-radius: 12px;
+    background-color: white;
+    color: #333;
+    font-size: 0.95rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.option-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Filter input for dropdowns */
+.filter-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.filter-input:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Enhanced diagnosis section styling */
+.diagnosis-section {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.diagnosis-explanation {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.diagnosis-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.condition-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.condition-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* New styles for Ada-like report format */
+.condition-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.likelihood-percentage {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1a73e8;
+    margin-left: 10px;
+}
+
+.urgency-indicator {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.urgency-indicator.urgent {
+    background-color: #fce8e6;
+    color: #c5221f;
+    border-left: 3px solid #c5221f;
+}
+
+.urgency-indicator.semi-urgent {
+    background-color: #fef7e0;
+    color: #b06000;
+    border-left: 3px solid #f4b400;
+}
+
+.urgency-indicator.routine {
+    background-color: #e6f4ea;
+    color: #137333;
+    border-left: 3px solid #0f9d58;
+}
+
+.urgency-indicator.self-care {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    border-left: 3px solid #1a73e8;
+}
+
+.supporting-symptoms {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.supporting-symptoms li {
+    margin-bottom: 5px;
+}
+
+.condition-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.seek-advice-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.seek-advice-btn:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Symptom analysis section */
+.symptom-analysis-section {
+    background-color: #f0f7ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.symptoms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.symptom-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.symptom-card h4 {
+    color: #1a73e8;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.symptom-card p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 500px) {
+    .chat-container {
+        height: 95vh;
+        border-radius: 0;
+        max-width: 100%;
+    }
+    
+    .consult-options {
+        flex-direction: column;
+    }
+    
+    .report-list li {
+        flex-direction: column;
+    }
+    
+    .likelihood-indicator {
+        margin-bottom: 8px;
+    }
+    
+    .report-container {
+        padding: 15px;
+    }
+    
+    /* Ensure symptom search results are visible on mobile */
+    .symptom-search-results {
+        max-height: 200px;
+    }
+    
+    .condition-actions {
+        flex-direction: column;
+    }
+}
+
+/* Responsive design for desktop/laptop */
+@media (min-width: 768px) {
+    body {
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+    
+    .chat-container {
+        max-width: 800px; /* Wider container for desktop */
+        height: 80vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto auto auto;
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-messages {
+        padding: 25px;
+    }
+    
+    .message {
+        max-width: 70%; /* Narrower messages on wider screen */
+    }
+    
+    .report-container {
+        padding: 30px;
+    }
+    
+    .consult-options {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .diagnosis-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .condition-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .learn-more-btn {
+        margin-top: auto;
+    }
+    
+    .symptoms-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* Mobile design */
+@media (max-width: 767px) {
+    body {
+        padding: 0;
+    }
+    
+    .chat-container {
+        height: 100vh;
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+    
+    .consult-options {
+        flex-direction: column;
+    }
+    
+    .report-container {
+        padding: 15px;
+    }
+    
+    .diagnosis-list {
+        gap: 12px;
+    }
+    
+    .condition-card {
+        padding: 15px;
+    }
+}
+
+/* Fix for the loading indicator */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    text-align: center;
+    display: none;
+}
