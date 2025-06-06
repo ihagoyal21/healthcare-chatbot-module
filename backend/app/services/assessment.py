@@ -31,6 +31,21 @@ class AssessmentService:
         # Track previously asked questions by ID to prevent repetition
         self._asked_questions_ids = set()
     
+    def search_symptoms(self, query):
+    """
+    Returns a list of symptoms whose name or synonyms contain the query string (case-insensitive).
+    Assumes self.symptoms is a list of dicts with at least a 'name' key, and optionally 'synonyms'.
+    """
+    query = query.lower()
+    results = []
+    for symptom in self.symptoms:
+        name = symptom.get('name', '').lower()
+        synonyms = [s.lower() for s in symptom.get('synonyms', [])]
+        if query in name or any(query in syn for syn in synonyms):
+            results.append(symptom)
+    return results
+
+
     def _load_json_data(self, filename):
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         data_dir = os.path.join(base_dir, 'data')
