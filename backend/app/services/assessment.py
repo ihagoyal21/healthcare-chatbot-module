@@ -106,14 +106,17 @@ class AssessmentService:
         return (direct_ratio * 0.6) + (jaccard * 0.3) + (prefix_score * 0.1)
 
     def _load_json_data(self, filename):
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         data_dir = os.path.join(base_dir, 'data')
         file_path = os.path.join(data_dir, filename)
+        file_path = os.path.abspath(file_path)
         if os.path.exists(file_path):
             with open(file_path, 'r') as f:
                 return json.load(f)
         print(f"Warning: Could not find data file {file_path}")
         return []
+
+
 
     
 
