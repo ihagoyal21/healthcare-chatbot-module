@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, jsonify
 from flask_cors import CORS
 import os
 
@@ -21,7 +21,23 @@ def static_proxy(path):
     if os.path.isfile(file_path):
         return send_from_directory(app.static_folder, path)
     else:
+        # Fallback to index.html for SPA routes
         return send_from_directory(app.static_folder, "index.html")
+
+@app.route("/api")
+def api_info():
+    return jsonify({
+        "message": "Healthcare Chatbot API",
+        "version": "1.0.0",
+        "endpoints": {
+            "health_check": "/api/health",
+            "process_input": "/api/assessment/next",
+            "quick_assessment": "/api/assessment/quick",
+            "search_symptoms": "/api/symptoms/search",
+            "start_assessment": "/api/assessment/start",
+            "start_new": "/api/assessment/start_new"
+        }
+    })
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 15000))
