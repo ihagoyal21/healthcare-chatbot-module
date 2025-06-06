@@ -576,6 +576,5 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.adjustLayoutForScreenSize();
     });
     
-    // Initial layout adjustment
-    ui.adjustLayoutForScreenSize();
+    
 });
