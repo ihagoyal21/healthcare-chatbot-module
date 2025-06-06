@@ -18,29 +18,92 @@ class AssessmentService:
         # Cache for frequently accessed data
         self._symptom_name_to_id_map = {s['name'].lower(): s['id'] for s in self.symptoms if 'name' in s and 'id' in s}
         self._symptom_id_to_obj_map = {s['id']: s for s in self.symptoms if 'id' in s}
-        # Create a mapping of symptom names to question flows for faster lookup
         self._symptom_to_question_flow = {}
         for symptom_key, flow in self.questions.items():
             if 'symptom_name' in flow:
                 self._symptom_to_question_flow[flow['symptom_name'].lower()] = symptom_key
         
-        # Track last returned question to prevent repetition
         self._last_question = None
-        # Track previously asked questions by text to prevent repetition
         self._asked_questions_texts = set()
-        # Track previously asked questions by ID to prevent repetition
         self._asked_questions_ids = set()
-    
+
     def search_symptoms(self, query):
         query = query.lower()
-        results = []
+        exact_matches = []
+        contains_matches = []
+        similar_matches = []
+        synonym_matches = []
+        
+        normalized_query = re.sub(r'[^\w\s]', '', query).strip()
+        query_words = set(normalized_query.split())
+        
         for symptom in self.symptoms:
-            name = symptom.get('name', '').lower()
-            synonyms = [s.lower() for s in symptom.get('synonyms', [])]
-            if query in name or any(query in syn for syn in synonyms):
-                results.append(symptom)
-        return results
+            symptom_name = symptom['name'].lower()
+            normalized_name = re.sub(r'[^\w\s]', '', symptom_name).strip()
+            symptom_words = set(normalized_name.split())
+            
+            if normalized_query == normalized_name:
+                exact_matches.append(symptom)
+                continue
+            if normalized_query in normalized_name:
+                contains_matches.append(symptom)
+                continue
+            if 'synonyms' in symptom:
+                for synonym in symptom['synonyms']:
+                    normalized_synonym = re.sub(r'[^\w\s]', '', synonym.lower()).strip()
+                    if normalized_query in normalized_synonym or normalized_synonym in normalized_query:
+                        synonym_matches.append(symptom)
+                        break
+                if symptom in synonym_matches:
+                    continue
+            word_overlap = len(query_words.intersection(symptom_words))
+            if word_overlap > 0:
+                symptom['_word_overlap'] = word_overlap / max(len(query_words), len(symptom_words))
+                contains_matches.append(symptom)
+                continue
+            similarity = self._similarity_score(normalized_query, normalized_name)
+            if similarity > 0.7:
+                symptom['_similarity'] = similarity
+                similar_matches.append(symptom)
+        
+        contains_matches.sort(key=lambda x: x.get('_word_overlap', 0), reverse=True)
+        similar_matches.sort(key=lambda x: x.get('_similarity', 0), reverse=True)
+        
+        results = exact_matches + contains_matches + synonym_matches + similar_matches
+        
+        unique_results = []
+        seen_ids = set()
+        for item in results:
+            if item['id'] not in seen_ids:
+                seen_ids.add(item['id'])
+                item.pop('_similarity', None)
+                item.pop('_word_overlap', None)
+                unique_results.append(item)
+        
+        return unique_results[:15]
 
+    def _similarity_score(self, a, b):
+        if not a or not b:
+            return 0
+        direct_ratio = SequenceMatcher(None, a, b).ratio()
+        a_words = set(a.split())
+        b_words = set(b.split())
+        if not a_words or not b_words:
+            return direct_ratio
+        intersection = len(a_words.intersection(b_words))
+        union = len(a_words.union(b_words))
+        jaccard = intersection / union if union > 0 else 0
+        prefix_matches = 0
+        for a_word in a_words:
+            for b_word in b_words:
+                min_length = min(len(a_word), len(b_word))
+                if min_length >= 3:
+                    prefix_length = min(min_length, 5)
+                    if a_word[:prefix_length] == b_word[:prefix_length]:
+                        prefix_matches += 1
+                        break
+        prefix_score = prefix_matches / max(len(a_words), len(b_words)) if max(len(a_words), len(b_words)) > 0 else 0
+        return (direct_ratio * 0.6) + (jaccard * 0.3) + (prefix_score * 0.1)
 
     def _load_json_data(self, filename):
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -50,81 +113,10 @@ class AssessmentService:
             with open(file_path, 'r') as f:
                 return json.load(f)
         print(f"Warning: Could not find data file {file_path}")
-        return {}
+        return []
 
+    
 
-
-        
-        query = query.lower()
-        exact_matches = []
-        contains_matches = []
-        similar_matches = []
-        synonym_matches = []
-        
-        # Normalize the query (remove punctuation, standardize spacing)
-        normalized_query = re.sub(r'[^\w\s]', '', query).strip()
-        query_words = set(normalized_query.split())
-        
-        for symptom in self.symptoms:
-            symptom_name = symptom['name'].lower()
-            normalized_name = re.sub(r'[^\w\s]', '', symptom_name).strip()
-            symptom_words = set(normalized_name.split())
-            
-            # Check for exact match
-            if normalized_query == normalized_name:
-                exact_matches.append(symptom)
-                continue
-                
-            # Check if symptom contains the query
-            if normalized_query in normalized_name:
-                contains_matches.append(symptom)
-                continue
-                
-            # Check for synonym matches
-            if 'synonyms' in symptom:
-                for synonym in symptom['synonyms']:
-                    normalized_synonym = re.sub(r'[^\w\s]', '', synonym.lower()).strip()
-                    if normalized_query in normalized_synonym or normalized_synonym in normalized_query:
-                        synonym_matches.append(symptom)
-                        break
-                if symptom in synonym_matches:
-                    continue
-            
-            # Check for word overlap (partial matches)
-            word_overlap = len(query_words.intersection(symptom_words))
-            if word_overlap > 0:
-                # Calculate similarity score based on word overlap and sequence matching
-                symptom['_word_overlap'] = word_overlap / max(len(query_words), len(symptom_words))
-                contains_matches.append(symptom)
-                continue
-            
-            # Check for similar symptoms using fuzzy matching
-            similarity = self._similarity_score(normalized_query, normalized_name)
-            if similarity > 0.7:  # Threshold for better precision
-                symptom['_similarity'] = similarity  # Store for sorting
-                similar_matches.append(symptom)
-        
-        # Sort each category by relevance
-        contains_matches.sort(key=lambda x: x.get('_word_overlap', 0), reverse=True)
-        similar_matches.sort(key=lambda x: x.get('_similarity', 0), reverse=True)
-        
-        # Combine results with priority: exact > contains > synonyms > similar
-        results = exact_matches + contains_matches + synonym_matches + similar_matches
-        
-        # Remove duplicates while preserving order
-        unique_results = []
-        seen_ids = set()
-        for item in results:
-            if item['id'] not in seen_ids:
-                seen_ids.add(item['id'])
-                # Remove temporary scores
-                if '_similarity' in item:
-                    del item['_similarity']
-                if '_word_overlap' in item:
-                    del item['_word_overlap']
-                unique_results.append(item)
-        
-        return unique_results[:15]  # Return top 15 matches for more options
     
     def _similarity_score(self, a, b):
         """Calculate similarity between two strings with improved algorithm"""
