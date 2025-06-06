@@ -1,5 +1,5 @@
 class ApiService {
-    constructor(baseUrl = 'http://localhost:8000') {
+    constructor(baseUrl = 'https://healthcare-chatbot-module.onrender.com') {
         this.baseUrl = baseUrl;
         this.sessionId = null;
     }

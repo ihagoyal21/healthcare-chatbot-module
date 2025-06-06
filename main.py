@@ -12,8 +12,9 @@ app = Flask(__name__, static_folder="frontend")
 
 # Allow CORS for local development and your deployed frontend
 CORS(app, origins=[
-    "http://127.0.0.1:15000",
+    "https://healthcare-chatbot-module.vercel.app",
     "http://localhost:15000",
+    "http://127.0.0.1:15000",
     "https://healthcare-chatbot-module.onrender.com"
 ])
 
