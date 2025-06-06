@@ -1,6 +1,12 @@
 from flask import Flask, send_from_directory, jsonify
 from flask_cors import CORS
 import os
+import sys
+
+# Add backend to Python path for imports
+sys.path.append(os.path.join(os.path.dirname(__file__), "backend"))
+
+from app.routes import main as main_blueprint  # <-- Import your blueprint
 
 app = Flask(__name__, static_folder="frontend")
 
@@ -10,6 +16,9 @@ CORS(app, origins=[
     "http://localhost:15000",
     "https://healthcare-chatbot-module.onrender.com"
 ])
+
+# Register your API blueprint!
+app.register_blueprint(main_blueprint)
 
 @app.route("/")
 def index():
