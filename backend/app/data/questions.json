@@ -1,0 +1,766 @@
+{
+    "runny_nose": {
+      "symptom_name": "Runny nose",
+      "first_question": {
+        "id": "runny_nose_duration",
+        "text": "How long have you been experiencing a runny nose?",
+        "options": ["Less than 24 hours", "1-3 days", "4-7 days", "1-2 weeks", "2-4 weeks", "1-3 months", "More than 3 months"]
+      },
+      "follow_up_questions": {
+        "runny_nose_duration": {
+          "next_question": {
+            "id": "nasal_discharge_appearance",
+            "text": "How would you best describe the appearance of your nasal discharge?",
+            "options": ["Clear and watery", "Thick and white", "Yellow or green", "Blood-tinged", "Crusty"],
+            "info_button": {
+              "title": "What does this mean?",
+              "content": "The color and consistency of nasal discharge can help determine the cause. Clear discharge often indicates allergies, while colored discharge may suggest infection."
+            }
+          }
+        },
+        "nasal_discharge_appearance": {
+          "next_question": {
+            "id": "nasal_congestion",
+            "text": "Do you also have nasal congestion (stuffy nose)?",
+            "options": ["Yes, severe", "Yes, moderate", "Yes, mild", "No"]
+          }
+        },
+        "nasal_congestion": {
+          "next_question": {
+            "id": "sneezing",
+            "text": "Are you experiencing sneezing?",
+            "options": ["Yes, frequent", "Yes, occasional", "No"]
+          }
+        },
+        "sneezing": {
+          "next_question": {
+            "id": "seasonal_pattern",
+            "text": "Have you noticed if your symptoms follow any seasonal pattern?",
+            "options": ["Yes, worse in spring", "Yes, worse in summer", "Yes, worse in fall", "Yes, worse in winter", "No seasonal pattern", "Not sure"]
+          }
+        },
+        "seasonal_pattern": {
+          "next_question": {
+            "id": "facial_pain",
+            "text": "Do you have pain or pressure in your face, particularly around your eyes, cheeks, or forehead?",
+            "options": ["Yes, severe", "Yes, moderate", "Yes, mild", "No"]
+          }
+        },
+        "facial_pain": {
+          "next_question": {
+            "id": "other_symptoms",
+            "text": "Are you experiencing any of these other symptoms?",
+            "options": ["Itchy eyes", "Watery eyes", "Sore throat", "Fever", "Headache", "Reduced sense of smell", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "other_symptoms": {
+          "next_question": {
+            "id": "allergy_history",
+            "text": "Do you have a history of allergies?",
+            "options": ["Yes, seasonal allergies", "Yes, pet allergies", "Yes, food allergies", "Yes, multiple types", "No", "Not sure"]
+          }
+        },
+        "allergy_history": {
+          "next_question": {
+            "id": "symptom_triggers",
+            "text": "Have you noticed anything that seems to trigger or worsen your symptoms?",
+            "options": ["Pollen/outdoor allergens", "Dust", "Pet dander", "Certain foods", "Cold air", "Exercise", "Nothing specific"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "headache": {
+      "symptom_name": "Headache",
+      "first_question": {
+        "id": "headache_duration",
+        "text": "How long have you been experiencing this headache?",
+        "options": ["Less than 4 hours", "4-24 hours", "1-3 days", "4-7 days", "More than 1 week"]
+      },
+      "follow_up_questions": {
+        "headache_duration": {
+          "next_question": {
+            "id": "headache_frequency",
+            "text": "How often do you get these headaches?",
+            "options": ["This is the first time", "Less than once a month", "1-3 times per month", "1-3 times per week", "Almost daily", "Constant/never goes away completely"]
+          }
+        },
+        "headache_frequency": {
+          "next_question": {
+            "id": "headache_location",
+            "text": "Where is your headache located?",
+            "options": ["Front of the head/forehead", "Back of the head", "One side only", "Both sides", "Behind the eyes", "All over"]
+          }
+        },
+        "headache_location": {
+          "next_question": {
+            "id": "headache_character",
+            "text": "How would you describe the pain?",
+            "options": ["Throbbing/pulsating", "Pressure/squeezing", "Sharp/stabbing", "Dull ache", "Burning"]
+          }
+        },
+        "headache_character": {
+          "next_question": {
+            "id": "headache_severity",
+            "text": "On a scale of 1-10, how severe is your headache?",
+            "options": ["1-3 (Mild)", "4-6 (Moderate)", "7-9 (Severe)", "10 (Worst pain imaginable)"]
+          }
+        },
+        "headache_severity": {
+          "next_question": {
+            "id": "headache_aura",
+            "text": "Before your headache begins, do you experience any warning signs like visual changes (flashing lights, blind spots), numbness, or speech difficulties?",
+            "options": ["Yes, regularly", "Yes, sometimes", "No", "Not sure"]
+          }
+        },
+        "headache_aura": {
+          "next_question": {
+            "id": "headache_triggers",
+            "text": "Have you noticed anything that seems to trigger your headaches?",
+            "options": ["Stress", "Lack of sleep", "Certain foods/drinks", "Alcohol", "Bright lights/loud noises", "Menstruation", "Weather changes", "Nothing specific"],
+            "multiple_select": true
+          }
+        },
+        "headache_triggers": {
+          "next_question": {
+            "id": "headache_associated_symptoms",
+            "text": "Do you experience any of these symptoms with your headaches?",
+            "options": ["Nausea/vomiting", "Sensitivity to light", "Sensitivity to sound", "Dizziness", "Neck pain", "Runny nose/teary eyes", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "headache_associated_symptoms": {
+          "next_question": {
+            "id": "headache_relief",
+            "text": "What helps relieve your headache?",
+            "options": ["Over-the-counter pain medication", "Prescription medication", "Rest/sleep", "Dark, quiet room", "Cold/hot compress", "Nothing helps", "Haven't tried anything"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "cough": {
+      "symptom_name": "Cough",
+      "first_question": {
+        "id": "cough_duration",
+        "text": "How long have you been coughing?",
+        "options": ["Less than 24 hours", "1-3 days", "4-7 days", "1-2 weeks", "3-8 weeks", "More than 8 weeks"]
+      },
+      "follow_up_questions": {
+        "cough_duration": {
+          "next_question": {
+            "id": "cough_type",
+            "text": "How would you describe your cough?",
+            "options": ["Dry (no mucus/phlegm)", "Wet/productive (with mucus/phlegm)", "Both dry and productive", "Barking/seal-like"]
+          }
+        },
+        "cough_type": {
+          "condition": {
+            "answers": ["Wet/productive (with mucus/phlegm)", "Both dry and productive"]
+          },
+          "next_question": {
+            "id": "sputum_color",
+            "text": "What color is the mucus/phlegm you cough up?",
+            "options": ["Clear/white", "Yellow", "Green", "Brown", "Pink/red (blood-tinged)"]
+          }
+        },
+        "cough_type": {
+          "condition": {
+            "answers": ["Dry (no mucus/phlegm)", "Barking/seal-like"]
+          },
+          "next_question": {
+            "id": "cough_timing",
+            "text": "When is your cough worst?",
+            "options": ["Morning", "Night", "After exercise", "After eating", "When lying down", "No specific pattern"]
+          }
+        },
+        "sputum_color": {
+          "next_question": {
+            "id": "cough_timing",
+            "text": "When is your cough worst?",
+            "options": ["Morning", "Night", "After exercise", "After eating", "When lying down", "No specific pattern"]
+          }
+        },
+        "cough_timing": {
+          "next_question": {
+            "id": "cough_triggers",
+            "text": "Does anything trigger or worsen your cough?",
+            "options": ["Cold air", "Exercise", "Talking/laughing", "Eating/drinking", "Lying down", "Strong smells/smoke", "Nothing specific"],
+            "multiple_select": true
+          }
+        },
+        "cough_triggers": {
+          "next_question": {
+            "id": "associated_symptoms",
+            "text": "Are you experiencing any of these other symptoms?",
+            "options": ["Fever", "Shortness of breath", "Chest pain", "Wheezing", "Sore throat", "Runny/stuffy nose", "Fatigue", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "associated_symptoms": {
+          "next_question": {
+            "id": "smoking_history",
+            "text": "Do you smoke or have you smoked in the past?",
+            "options": ["Currently smoke", "Quit within the last year", "Quit more than a year ago", "Never smoked"]
+          }
+        },
+        "smoking_history": {
+          "next_question": {
+            "id": "cough_relief",
+            "text": "Have you tried anything that helps relieve your cough?",
+            "options": ["Over-the-counter cough medicine", "Prescription medication", "Throat lozenges", "Warm liquids", "Humidifier", "Nothing helps", "Haven't tried anything"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "chest_pain": {
+      "symptom_name": "Chest Pain",
+      "first_question": {
+        "id": "chest_pain_duration",
+        "text": "How long have you been experiencing chest pain?",
+        "options": ["Right now/currently", "Less than 1 hour", "1-24 hours", "1-3 days", "More than 3 days"]
+      },
+      "follow_up_questions": {
+        "chest_pain_duration": {
+          "next_question": {
+            "id": "chest_pain_onset",
+            "text": "How did the chest pain start?",
+            "options": ["Suddenly/all at once", "Gradually", "After physical exertion", "After eating", "After emotional stress"]
+          }
+        },
+        "chest_pain_onset": {
+          "next_question": {
+            "id": "chest_pain_location",
+            "text": "Where exactly is the pain located?",
+            "options": ["Center of chest", "Left side of chest", "Right side of chest", "Upper chest", "Lower chest", "Entire chest"]
+          }
+        },
+        "chest_pain_location": {
+          "next_question": {
+            "id": "chest_pain_character",
+            "text": "How would you describe the pain?",
+            "options": ["Pressure/squeezing", "Sharp/stabbing", "Burning", "Aching/dull", "Tearing/ripping"]
+          }
+        },
+        "chest_pain_character": {
+          "next_question": {
+            "id": "chest_pain_severity",
+            "text": "On a scale of 1-10, how severe is the pain?",
+            "options": ["1-3 (Mild)", "4-6 (Moderate)", "7-9 (Severe)", "10 (Worst pain imaginable)"]
+          }
+        },
+        "chest_pain_severity": {
+          "next_question": {
+            "id": "chest_pain_radiation",
+            "text": "Does the pain spread or radiate to other areas?",
+            "options": ["Left arm/shoulder", "Right arm/shoulder", "Jaw/neck", "Back", "Abdomen", "No radiation"]
+          }
+        },
+        "chest_pain_radiation": {
+          "next_question": {
+            "id": "chest_pain_breathing",
+            "text": "Does the pain change with breathing?",
+            "options": ["Yes, worse with deep breath", "Yes, worse with any breathing", "No change with breathing"]
+          }
+        },
+        "chest_pain_breathing": {
+          "next_question": {
+            "id": "chest_pain_position",
+            "text": "Does changing position affect the pain?",
+            "options": ["Yes, worse when lying down", "Yes, worse when sitting up", "Yes, worse with certain movements", "No effect from position changes"]
+          }
+        },
+        "chest_pain_position": {
+          "next_question": {
+            "id": "chest_pain_associated",
+            "text": "Are you experiencing any of these symptoms along with chest pain?",
+            "options": ["Shortness of breath", "Sweating", "Nausea/vomiting", "Dizziness/lightheadedness", "Palpitations", "Fatigue", "None of these"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "stomach_pain": {
+      "symptom_name": "Stomach Pain",
+      "first_question": {
+        "id": "abdominal_pain_duration",
+        "text": "How long have you been experiencing stomach/abdominal pain?",
+        "options": ["Less than 6 hours", "6-24 hours", "1-3 days", "4-7 days", "1-4 weeks", "More than 4 weeks"]
+      },
+      "follow_up_questions": {
+        "abdominal_pain_duration": {
+          "next_question": {
+            "id": "abdominal_pain_location",
+            "text": "Where in your abdomen is the pain located?",
+            "options": ["Upper abdomen/stomach area", "Lower abdomen", "Right side", "Left side", "Around the navel", "All over abdomen"]
+          }
+        },
+        "abdominal_pain_location": {
+          "next_question": {
+            "id": "abdominal_pain_character",
+            "text": "How would you describe the pain?",
+            "options": ["Sharp/stabbing", "Cramping", "Burning", "Dull/aching", "Pressure/fullness"]
+          }
+        },
+        "abdominal_pain_character": {
+          "next_question": {
+            "id": "abdominal_pain_pattern",
+            "text": "How would you describe the pattern of pain?",
+            "options": ["Constant (always present)", "Intermittent (comes and goes)", "Worsening over time", "Improving over time"]
+          }
+        },
+        "abdominal_pain_pattern": {
+          "next_question": {
+            "id": "abdominal_pain_severity",
+            "text": "On a scale of 1-10, how severe is the pain?",
+            "options": ["1-3 (Mild)", "4-6 (Moderate)", "7-9 (Severe)", "10 (Worst pain imaginable)"]
+          }
+        },
+        "abdominal_pain_severity": {
+          "next_question": {
+            "id": "abdominal_pain_meals",
+            "text": "How does eating affect your pain?",
+            "options": ["Pain improves after eating", "Pain worsens after eating", "Pain occurs mainly when hungry", "No relation to eating"]
+          }
+        },
+        "abdominal_pain_meals": {
+          "next_question": {
+            "id": "associated_gi_symptoms",
+            "text": "Are you experiencing any of these digestive symptoms?",
+            "options": ["Nausea", "Vomiting", "Diarrhea", "Constipation", "Bloating", "Heartburn", "Loss of appetite", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "associated_gi_symptoms": {
+          "condition": {
+            "contains": "vomiting"
+          },
+          "next_question": {
+            "id": "vomiting_character",
+            "text": "If you've vomited, how would you describe it?",
+            "options": ["Food contents", "Yellow/green (bile)", "Coffee-ground appearance", "Bright red blood", "Clear fluid", "Haven't vomited"]
+          }
+        },
+        "associated_gi_symptoms": {
+          "condition": {
+            "not_contains": "vomiting"
+          },
+          "next_question": {
+            "id": "bowel_changes",
+            "text": "Have you noticed any changes in your bowel movements?",
+            "options": ["More frequent", "Less frequent", "Looser/watery", "Harder/difficult to pass", "Blood in stool", "Black/tarry stool", "No changes"]
+          }
+        },
+        "vomiting_character": {
+          "next_question": {
+            "id": "bowel_changes",
+            "text": "Have you noticed any changes in your bowel movements?",
+            "options": ["More frequent", "Less frequent", "Looser/watery", "Harder/difficult to pass", "Blood in stool", "Black/tarry stool", "No changes"]
+          }
+        }
+      }
+    },
+    "fatigue": {
+      "symptom_name": "Fatigue",
+      "first_question": {
+        "id": "fatigue_duration",
+        "text": "How long have you been experiencing fatigue?",
+        "options": ["Less than 1 week", "1-4 weeks", "1-3 months", "3-6 months", "More than 6 months"]
+      },
+      "follow_up_questions": {
+        "fatigue_duration": {
+          "next_question": {
+            "id": "fatigue_onset",
+            "text": "How did your fatigue begin?",
+            "options": ["Suddenly", "Gradually", "After an illness", "After a stressful event", "Can't remember"]
+          }
+        },
+        "fatigue_onset": {
+          "next_question": {
+            "id": "fatigue_pattern",
+            "text": "How would you describe your fatigue pattern?",
+            "options": ["Constant (all day, every day)", "Worse in the morning", "Worse in the afternoon/evening", "Comes and goes", "After physical activity"]
+          }
+        },
+        "fatigue_pattern": {
+          "next_question": {
+            "id": "fatigue_severity",
+            "text": "How severely does the fatigue affect your daily activities?",
+            "options": ["Mild (noticeable but doesn't limit activities)", "Moderate (limits some activities)", "Severe (significantly limits most activities)", "Very severe (unable to perform most activities)"]
+          }
+        },
+        "fatigue_severity": {
+          "next_question": {
+            "id": "sleep_quality",
+            "text": "How would you rate your sleep quality?",
+            "options": ["Good (feel rested upon waking)", "Fair (sometimes feel rested)", "Poor (rarely feel rested)", "Very poor (never feel rested)"]
+          }
+        },
+        "sleep_quality": {
+          "next_question": {
+            "id": "sleep_duration",
+            "text": "How many hours do you typically sleep per night?",
+            "options": ["Less than 5 hours", "5-6 hours", "7-8 hours", "More than 8 hours", "Highly variable"]
+          }
+        },
+        "sleep_duration": {
+          "next_question": {
+            "id": "associated_symptoms",
+            "text": "Are you experiencing any of these other symptoms?",
+            "options": ["Headaches", "Muscle/joint pain", "Sore throat", "Difficulty concentrating", "Memory problems", "Low mood/depression", "Anxiety", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "associated_symptoms": {
+          "next_question": {
+            "id": "stress_level",
+            "text": "How would you rate your current stress level?",
+            "options": ["Low", "Moderate", "High", "Very high"]
+          }
+        },
+        "stress_level": {
+          "next_question": {
+            "id": "fatigue_relief",
+            "text": "What helps improve your fatigue?",
+            "options": ["Rest/sleep", "Exercise", "Reducing stress", "Caffeine", "Nothing helps", "Haven't tried anything"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "rash": {
+      "symptom_name": "Rash",
+      "first_question": {
+        "id": "rash_duration",
+        "text": "How long have you had this rash?",
+        "options": ["Less than 24 hours", "1-3 days", "4-7 days", "1-2 weeks", "More than 2 weeks"]
+      },
+      "follow_up_questions": {
+        "rash_duration": {
+          "next_question": {
+            "id": "rash_location",
+            "text": "Where is the rash located?",
+            "options": ["Face", "Neck", "Chest/torso", "Back", "Arms", "Legs", "Hands/feet", "Groin/genital area", "All over body"],
+            "multiple_select": true
+          }
+        },
+        "rash_location": {
+          "next_question": {
+            "id": "rash_appearance",
+            "text": "How would you describe the appearance of the rash?",
+            "options": ["Red/pink patches", "Raised bumps/hives", "Blisters", "Scaly/flaky", "Bruise-like", "Pimple-like"]
+          }
+        },
+        "rash_appearance": {
+          "next_question": {
+            "id": "rash_symptoms",
+            "text": "Is the rash associated with any of these symptoms?",
+            "options": ["Itching", "Burning", "Pain", "Warmth", "Swelling", "No symptoms"],
+            "multiple_select": true
+          }
+        },
+        "rash_symptoms": {
+          "next_question": {
+            "id": "rash_spreading",
+            "text": "Is the rash spreading or changing?",
+            "options": ["Yes, rapidly spreading", "Yes, slowly spreading", "No, staying the same", "Actually improving"]
+          }
+        },
+        "rash_spreading": {
+          "next_question": {
+            "id": "rash_triggers",
+            "text": "Have you noticed anything that might have triggered the rash?",
+            "options": ["New medication", "New personal care product", "New laundry detergent", "Food", "Contact with plants", "Insect bite", "Stress", "Nothing identified"],
+            "multiple_select": true
+          }
+        },
+        "rash_triggers": {
+          "next_question": {
+            "id": "systemic_symptoms",
+            "text": "Are you experiencing any of these general symptoms?",
+            "options": ["Fever", "Fatigue", "Headache", "Joint pain", "Sore throat", "Swollen lymph nodes", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "systemic_symptoms": {
+          "next_question": {
+            "id": "rash_treatment",
+            "text": "Have you tried any treatments for the rash?",
+            "options": ["Over-the-counter cream/ointment", "Antihistamine", "Cold compress", "Prescription medication", "Nothing yet"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "joint_pain": {
+      "symptom_name": "Joint Pain",
+      "first_question": {
+        "id": "joint_pain_duration",
+        "text": "How long have you been experiencing joint pain?",
+        "options": ["Less than 1 week", "1-4 weeks", "1-3 months", "3-12 months", "More than 1 year"]
+      },
+      "follow_up_questions": {
+        "joint_pain_duration": {
+          "next_question": {
+            "id": "joint_pain_location",
+            "text": "Which joints are affected?",
+            "options": ["Knees", "Hips", "Ankles", "Shoulders", "Elbows", "Wrists", "Fingers/hands", "Toes/feet", "Spine/back", "Jaw"],
+            "multiple_select": true
+          }
+        },
+        "joint_pain_location": {
+          "next_question": {
+            "id": "joint_pain_pattern",
+            "text": "How many joints are affected?",
+            "options": ["Just one joint", "2-4 joints", "Many joints (5 or more)", "Joints on both sides of body equally"]
+          }
+        },
+        "joint_pain_pattern": {
+          "next_question": {
+            "id": "joint_pain_character",
+            "text": "How would you describe the joint pain?",
+            "options": ["Sharp/stabbing", "Dull aching", "Throbbing", "Burning", "Stiffness more than pain"]
+          }
+        },
+        "joint_pain_character": {
+          "next_question": {
+            "id": "joint_swelling",
+            "text": "Is there any swelling in the affected joint(s)?",
+            "options": ["Yes, significant swelling", "Yes, mild swelling", "No visible swelling", "Not sure"]
+          }
+        },
+        "joint_swelling": {
+          "next_question": {
+            "id": "joint_redness",
+            "text": "Is there any redness or warmth in the affected joint(s)?",
+            "options": ["Yes, very red and warm", "Yes, slightly red or warm", "No", "Not sure"]
+          }
+        },
+        "joint_redness": {
+          "next_question": {
+            "id": "morning_stiffness",
+            "text": "Do you experience stiffness in your joints when you wake up in the morning?",
+            "options": ["No morning stiffness", "Yes, for less than 30 minutes", "Yes, for 30-60 minutes", "Yes, for more than 1 hour"]
+          }
+        },
+        "morning_stiffness": {
+          "next_question": {
+            "id": "joint_triggers",
+            "text": "What makes your joint pain worse?",
+            "options": ["Physical activity", "Rest/inactivity", "Cold weather", "Damp weather", "Specific movements", "Nothing specific"],
+            "multiple_select": true
+          }
+        },
+        "joint_triggers": {
+          "next_question": {
+            "id": "joint_relief",
+            "text": "What helps relieve your joint pain?",
+            "options": ["Rest", "Heat", "Cold", "Over-the-counter pain relievers", "Prescription medication", "Movement/gentle exercise", "Nothing helps"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "dizziness": {
+      "symptom_name": "Dizziness",
+      "first_question": {
+        "id": "dizziness_duration",
+        "text": "How long have you been experiencing dizziness?",
+        "options": ["Currently happening", "Started within 24 hours", "1-7 days", "1-4 weeks", "More than 1 month"]
+      },
+      "follow_up_questions": {
+        "dizziness_duration": {
+          "next_question": {
+            "id": "dizziness_type",
+            "text": "How would you best describe your dizziness?",
+            "options": ["Spinning sensation (vertigo)", "Lightheadedness/feeling faint", "Unsteadiness/loss of balance", "Floating sensation", "Combination of these"]
+          }
+        },
+        "dizziness_type": {
+          "next_question": {
+            "id": "dizziness_pattern",
+            "text": "How often do you experience these dizzy episodes?",
+            "options": ["Constant (all the time)", "Multiple times daily", "Once daily", "Several times a week", "Occasionally", "This is the first time"]
+          }
+        },
+        "dizziness_pattern": {
+          "next_question": {
+            "id": "dizziness_onset",
+            "text": "How do these episodes typically start?",
+            "options": ["Suddenly", "Gradually", "After changing positions", "After certain movements", "No clear pattern"]
+          }
+        },
+        "dizziness_onset": {
+          "next_question": {
+            "id": "dizziness_duration_episode",
+            "text": "How long does each episode of dizziness typically last?",
+            "options": ["Seconds", "Minutes", "Hours", "Days", "Constant"]
+          }
+        },
+        "dizziness_duration_episode": {
+          "next_question": {
+            "id": "dizziness_triggers",
+            "text": "Does anything seem to trigger your dizziness?",
+            "options": ["Standing up quickly", "Head movements", "Specific body positions", "Exercise", "Stress/anxiety", "Nothing specific"],
+            "multiple_select": true
+          }
+        },
+        "dizziness_triggers": {
+          "next_question": {
+            "id": "associated_symptoms",
+            "text": "Do you experience any of these symptoms with your dizziness?",
+            "options": ["Nausea/vomiting", "Headache", "Hearing changes", "Ringing in ears", "Vision changes", "Loss of balance", "Fainting", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "associated_symptoms": {
+          "next_question": {
+            "id": "medical_conditions",
+            "text": "Do you have any of these medical conditions?",
+            "options": ["High or low blood pressure", "Heart condition", "Diabetes", "Migraine", "Anxiety", "Inner ear problems", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "medical_conditions": {
+          "next_question": {
+            "id": "medications",
+            "text": "Are you currently taking any medications?",
+            "options": ["Blood pressure medications", "Heart medications", "Anti-anxiety/depression medications", "Pain medications", "Antibiotics", "Other medications", "No medications"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "shortness_of_breath": {
+      "symptom_name": "Shortness of Breath",
+      "first_question": {
+        "id": "sob_duration",
+        "text": "How long have you been experiencing shortness of breath?",
+        "options": ["Just started", "Hours", "Days", "Weeks", "Months", "Years"]
+      },
+      "follow_up_questions": {
+        "sob_duration": {
+          "next_question": {
+            "id": "sob_onset",
+            "text": "How did your shortness of breath begin?",
+            "options": ["Suddenly/all at once", "Gradually over time", "After physical activity", "After an illness", "After an injury"]
+          }
+        },
+        "sob_onset": {
+          "next_question": {
+            "id": "sob_severity",
+            "text": "How severe is your shortness of breath?",
+            "options": ["Mild - noticeable but doesn't limit activities", "Moderate - limits some activities", "Severe - significantly limits activities", "Very severe - can barely move without breathlessness"]
+          }
+        },
+        "sob_severity": {
+          "next_question": {
+            "id": "sob_triggers",
+            "text": "What activities trigger or worsen your shortness of breath?",
+            "options": ["At rest (even when not moving)", "Minimal activity (getting dressed)", "Light activity (walking)", "Moderate activity (climbing stairs)", "Heavy activity (running)", "Lying down flat"],
+            "multiple_select": true
+          }
+        },
+        "sob_triggers": {
+          "next_question": {
+            "id": "sob_associated",
+            "text": "Are you experiencing any of these symptoms along with shortness of breath?",
+            "options": ["Chest pain", "Cough", "Wheezing", "Fever", "Swelling in legs/ankles", "Palpitations", "None of these"],
+            "multiple_select": true
+          }
+        },
+        "sob_associated": {
+          "next_question": {
+            "id": "sob_position",
+            "text": "Does your breathing difficulty change with body position?",
+            "options": ["Worse when lying down", "Better when sitting upright", "Better when leaning forward", "No effect from position"]
+          }
+        },
+        "sob_position": {
+          "next_question": {
+            "id": "sob_waking",
+            "text": "Do you ever wake up at night feeling short of breath?",
+            "options": ["Yes, frequently", "Yes, occasionally", "No, never"]
+          }
+        },
+        "sob_waking": {
+          "next_question": {
+            "id": "sob_history",
+            "text": "Do you have any of these conditions?",
+            "options": ["Asthma", "COPD/Emphysema", "Heart problems", "Allergies", "Anxiety", "None of these"],
+            "multiple_select": true
+          }
+        }
+      }
+    },
+    "nausea": {
+      "symptom_name": "Nausea",
+      "first_question": {
+        "id": "nausea_duration",
+        "text": "How long have you been experiencing nausea?",
+        "options": ["Less than 24 hours", "1-3 days", "4-7 days", "More than a week"]
+      },
+      "follow_up_questions": {
+        "nausea_duration": {
+          "next_question": {
+            "id": "nausea_severity",
+            "text": "How severe is your nausea?",
+            "options": ["Mild - noticeable but doesn't affect activities", "Moderate - somewhat affects activities", "Severe - significantly affects activities"]
+          }
+        },
+        "nausea_severity": {
+          "next_question": {
+            "id": "vomiting",
+            "text": "Have you vomited?",
+            "options": ["Yes, multiple times", "Yes, once", "No, just feeling nauseated"]
+          }
+        },
+        "vomiting": {
+          "condition": {
+            "answers": ["Yes, multiple times", "Yes, once"]
+          },
+          "next_question": {
+            "id": "vomit_appearance",
+            "text": "How would you describe what you vomited?",
+            "options": ["Food/stomach contents", "Yellow/green bile", "Coffee-ground appearance", "Bright red blood", "Clear fluid"]
+          }
+        },
+        "vomiting": {
+          "condition": {
+            "answers": ["No, just feeling nauseated"]
+          },
+          "next_question": {
+            "id": "nausea_pattern",
+            "text": "When is your nausea worst?",
+            "options": ["Morning", "After eating", "Throughout the day", "Evening/night", "No specific pattern"]
+          }
+        },
+        "vomit_appearance": {
+          "next_question": {
+            "id": "nausea_pattern",
+            "text": "When is your nausea worst?",
+            "options": ["Morning", "After eating", "Throughout the day", "Evening/night", "No specific pattern"]
+          }
+        },
+        "nausea_pattern": {
+          "next_question": {
+            "id": "nausea_triggers",
+            "text": "Does anything seem to trigger or worsen your nausea?",
+            "options": ["Certain foods", "Eating in general", "Smells", "Movement/travel", "Stress/anxiety", "Nothing specific"],
+            "multiple_select": true
+          }
+        },
+        "nausea_triggers": {
+          "next_question": {
+            "id": "nausea_associated",
+            "text": "Are you experiencing any of these symptoms along with nausea?",
+            "options": ["Abdominal pain", "Diarrhea", "Headache", "Dizziness", "Fever", "Loss of appetite", "None of these"],
+            "multiple_select": true
+          }
+        }
+      }
+    }
+  }
+  

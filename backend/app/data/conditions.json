@@ -1,0 +1,272 @@
+[
+    {
+      "id": "c1",
+      "name": "Common Cold",
+      "description": "A viral infectious disease of the upper respiratory tract that primarily affects the nose and throat.",
+      "primary_symptoms": ["sneezing", "runny nose", "sore throat"],
+      "secondary_symptoms": ["mild fever", "cough", "fatigue", "watery eyes"],
+      "symptom_relationships": [
+        {"symptom": "runny nose", "strength": 0.9},
+        {"symptom": "sore throat", "strength": 0.7},
+        {"symptom": "cough", "strength": 0.5}
+      ],
+      "urgency_level": "self-care",
+      "likelihood_factors": {
+        "increases": ["recent exposure to sick contacts", "mild symptoms", "gradual onset"],
+        "decreases": ["high fever", "shortness of breath", "chest pain"]
+      },
+      "recommendation": "Rest, stay hydrated, and use over-the-counter medications if needed."
+    },
+    {
+      "id": "c2",
+      "name": "Influenza",
+      "description": "A contagious respiratory illness caused by influenza viruses, often with sudden onset.",
+      "primary_symptoms": ["high fever", "muscle aches", "dry cough"],
+      "secondary_symptoms": ["chills", "headache", "fatigue", "sore throat"],
+      "symptom_relationships": [
+        {"symptom": "high fever", "strength": 0.95},
+        {"symptom": "muscle aches", "strength": 0.8},
+        {"symptom": "dry cough", "strength": 0.7}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["sudden onset", "community outbreak", "muscle pain"],
+        "decreases": ["mild symptoms", "symptoms >2 weeks"]
+      },
+      "recommendation": "Rest, hydrate, and see a doctor if symptoms are severe or risk factors are present."
+    },
+    {
+      "id": "c3",
+      "name": "Pneumonia",
+      "description": "Infection that inflames air sacs in one or both lungs, which may fill with fluid.",
+      "primary_symptoms": ["productive cough", "fever", "shortness of breath"],
+      "secondary_symptoms": ["chest pain", "fatigue", "confusion (elderly)"],
+      "symptom_relationships": [
+        {"symptom": "productive cough", "strength": 0.9},
+        {"symptom": "fever", "strength": 0.8},
+        {"symptom": "shortness of breath", "strength": 0.8}
+      ],
+      "urgency_level": "immediate",
+      "likelihood_factors": {
+        "increases": ["elderly", "immunocompromised", "rapid breathing"],
+        "decreases": ["no fever", "no respiratory symptoms"]
+      },
+      "recommendation": "Seek medical attention immediately, especially if breathing is difficult."
+    },
+    {
+      "id": "c4",
+      "name": "Migraine",
+      "description": "A recurrent headache disorder often accompanied by sensitivity to light and sound.",
+      "primary_symptoms": ["throbbing headache", "nausea", "light sensitivity"],
+      "secondary_symptoms": ["aura", "vomiting", "sound sensitivity"],
+      "symptom_relationships": [
+        {"symptom": "throbbing headache", "strength": 0.9},
+        {"symptom": "nausea", "strength": 0.7},
+        {"symptom": "light sensitivity", "strength": 0.7}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["family history", "recurrent similar headaches"],
+        "decreases": ["first or worst headache", "neurological deficits"]
+      },
+      "recommendation": "Rest in a dark room, use pain relievers, and consult a doctor if frequent."
+    },
+    {
+      "id": "c5",
+      "name": "Gastroenteritis",
+      "description": "Inflammation of the stomach and intestines, causing vomiting and diarrhea.",
+      "primary_symptoms": ["diarrhea", "vomiting", "abdominal cramps"],
+      "secondary_symptoms": ["mild fever", "nausea", "loss of appetite"],
+      "symptom_relationships": [
+        {"symptom": "diarrhea", "strength": 0.95},
+        {"symptom": "vomiting", "strength": 0.8},
+        {"symptom": "abdominal cramps", "strength": 0.7}
+      ],
+      "urgency_level": "self-care",
+      "likelihood_factors": {
+        "increases": ["recent food exposure", "sick contacts", "acute onset"],
+        "decreases": ["blood in stool", "severe dehydration"]
+      },
+      "recommendation": "Stay hydrated and rest. Seek medical care if symptoms are severe or persistent."
+    },
+    {
+      "id": "c6",
+      "name": "Urinary Tract Infection",
+      "description": "Bacterial infection of the urinary tract, more common in females.",
+      "primary_symptoms": ["burning urination", "frequent urination", "lower abdominal pain"],
+      "secondary_symptoms": ["cloudy urine", "fever", "back pain"],
+      "symptom_relationships": [
+        {"symptom": "burning urination", "strength": 0.95},
+        {"symptom": "frequent urination", "strength": 0.85},
+        {"symptom": "lower abdominal pain", "strength": 0.7}
+      ],
+      "urgency_level": "prompt",
+      "likelihood_factors": {
+        "increases": ["female", "recent sexual activity"],
+        "decreases": ["no urinary symptoms", "male without risk factors"]
+      },
+      "recommendation": "Consult a doctor for antibiotics. Drink plenty of fluids."
+    },
+    {
+      "id": "c7",
+      "name": "Anxiety Disorder",
+      "description": "A mental health disorder characterized by feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities.",
+      "primary_symptoms": ["excessive worry", "restlessness", "difficulty concentrating"],
+      "secondary_symptoms": ["fatigue", "irritability", "sleep disturbance"],
+      "symptom_relationships": [
+        {"symptom": "excessive worry", "strength": 0.9},
+        {"symptom": "restlessness", "strength": 0.7},
+        {"symptom": "difficulty concentrating", "strength": 0.6}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["chronic stress", "family history"],
+        "decreases": ["sudden onset", "medical cause identified"]
+      },
+      "recommendation": "Practice relaxation techniques and consider speaking with a mental health professional."
+    },
+    {
+      "id": "c8",
+      "name": "Hypertension",
+      "description": "A chronic condition characterized by elevated blood pressure.",
+      "primary_symptoms": [],
+      "secondary_symptoms": ["headache", "dizziness", "nosebleeds (rare)"],
+      "symptom_relationships": [
+        {"symptom": "headache", "strength": 0.3},
+        {"symptom": "dizziness", "strength": 0.2}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["age >40", "obesity", "family history"],
+        "decreases": ["normal blood pressure readings"]
+      },
+      "recommendation": "Monitor blood pressure regularly and follow up with your doctor."
+    },
+    {
+      "id": "c9",
+      "name": "Allergic Rhinitis",
+      "description": "Inflammation of the nasal passages caused by an allergic reaction to airborne substances.",
+      "primary_symptoms": ["sneezing", "runny nose", "nasal congestion"],
+      "secondary_symptoms": ["itchy eyes", "watery eyes", "itchy nose", "post-nasal drip"],
+      "symptom_relationships": [
+        {"symptom": "sneezing", "strength": 0.9},
+        {"symptom": "runny nose", "strength": 0.85},
+        {"symptom": "itchy eyes", "strength": 0.7}
+      ],
+      "urgency_level": "self-care",
+      "likelihood_factors": {
+        "increases": ["seasonal pattern", "history of allergies", "improvement with antihistamines"],
+        "decreases": ["fever", "purulent discharge", "severe pain"]
+      },
+      "recommendation": "Avoid allergens, use over-the-counter antihistamines, and consider nasal corticosteroids."
+    },
+    {
+      "id": "c10",
+      "name": "Sinusitis",
+      "description": "Inflammation of the sinuses, often due to infection, allergies, or autoimmune issues.",
+      "primary_symptoms": ["facial pressure", "nasal congestion", "thick nasal discharge"],
+      "secondary_symptoms": ["headache", "post-nasal drip", "reduced sense of smell", "tooth pain"],
+      "symptom_relationships": [
+        {"symptom": "facial pressure", "strength": 0.9},
+        {"symptom": "thick nasal discharge", "strength": 0.8},
+        {"symptom": "headache", "strength": 0.6}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["symptoms >10 days", "recent upper respiratory infection"],
+        "decreases": ["rapid improvement", "no facial pain/pressure"]
+      },
+      "recommendation": "Use saline nasal irrigation, over-the-counter decongestants, and pain relievers. Consult a doctor if symptoms persist beyond 10 days."
+    },
+    {
+      "id": "c11",
+      "name": "Asthma",
+      "description": "A condition in which airways narrow and swell and may produce extra mucus, making breathing difficult.",
+      "primary_symptoms": ["wheezing", "shortness of breath", "chest tightness"],
+      "secondary_symptoms": ["coughing", "trouble sleeping", "fatigue"],
+      "symptom_relationships": [
+        {"symptom": "wheezing", "strength": 0.95},
+        {"symptom": "shortness of breath", "strength": 0.9},
+        {"symptom": "chest tightness", "strength": 0.8}
+      ],
+      "urgency_level": "prompt",
+      "likelihood_factors": {
+        "increases": ["history of allergies", "family history", "symptoms triggered by exercise/allergens"],
+        "decreases": ["fever", "productive cough", "chest pain"]
+      },
+      "recommendation": "Use prescribed inhalers as directed, identify and avoid triggers, and develop an asthma action plan with your healthcare provider."
+    },
+    {
+      "id": "c12",
+      "name": "Irritable Bowel Syndrome",
+      "description": "A common disorder affecting the large intestine, characterized by abdominal pain, cramping, bloating, gas, and diarrhea or constipation, or both.",
+      "primary_symptoms": ["abdominal pain", "bloating", "altered bowel habits"],
+      "secondary_symptoms": ["gas", "mucus in stool", "feeling of incomplete evacuation"],
+      "symptom_relationships": [
+        {"symptom": "abdominal pain", "strength": 0.9},
+        {"symptom": "bloating", "strength": 0.8},
+        {"symptom": "altered bowel habits", "strength": 0.85}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["symptoms improve after bowel movement", "chronic/recurrent symptoms", "stress exacerbation"],
+        "decreases": ["blood in stool", "weight loss", "symptoms wake patient from sleep"]
+      },
+      "recommendation": "Dietary changes, stress management, and regular exercise. Medication may be prescribed for specific symptoms."
+    },
+    {
+      "id": "c13",
+      "name": "Gastroesophageal Reflux Disease (GERD)",
+      "description": "A digestive disorder that affects the lower esophageal sphincter, causing stomach acid to regularly flow back into the esophagus.",
+      "primary_symptoms": ["heartburn", "regurgitation", "chest pain"],
+      "secondary_symptoms": ["difficulty swallowing", "chronic cough", "sore throat", "hoarseness"],
+      "symptom_relationships": [
+        {"symptom": "heartburn", "strength": 0.95},
+        {"symptom": "regurgitation", "strength": 0.8},
+        {"symptom": "chest pain", "strength": 0.7}
+      ],
+      "urgency_level": "routine",
+      "likelihood_factors": {
+        "increases": ["symptoms worse when lying down", "symptoms after meals", "obesity"],
+        "decreases": ["pain with swallowing", "weight loss", "vomiting"]
+      },
+      "recommendation": "Lifestyle modifications including dietary changes, weight management, and elevating the head during sleep. Medications such as antacids or proton pump inhibitors may be recommended."
+    },
+    {
+      "id": "c14",
+      "name": "Depression",
+      "description": "A mood disorder that causes a persistent feeling of sadness and loss of interest in activities once enjoyed.",
+      "primary_symptoms": ["persistent sadness", "loss of interest", "fatigue"],
+      "secondary_symptoms": ["sleep disturbances", "appetite changes", "difficulty concentrating", "feelings of worthlessness"],
+      "symptom_relationships": [
+        {"symptom": "persistent sadness", "strength": 0.9},
+        {"symptom": "loss of interest", "strength": 0.85},
+        {"symptom": "fatigue", "strength": 0.7}
+      ],
+      "urgency_level": "prompt",
+      "likelihood_factors": {
+        "increases": ["symptoms >2 weeks", "family history", "major life stressors"],
+        "decreases": ["symptoms <2 weeks", "medical cause identified"]
+      },
+      "recommendation": "Seek professional help from a mental health provider. Treatment typically includes psychotherapy, medication, or a combination of both."
+    },
+    {
+      "id": "c15",
+      "name": "Acute Myocardial Infarction (Heart Attack)",
+      "description": "A serious medical emergency in which the blood supply to the heart is suddenly blocked, usually by a blood clot.",
+      "primary_symptoms": ["chest pain/pressure", "shortness of breath", "pain radiating to arm/jaw"],
+      "secondary_symptoms": ["sweating", "nausea", "lightheadedness", "anxiety"],
+      "symptom_relationships": [
+        {"symptom": "chest pain/pressure", "strength": 0.95},
+        {"symptom": "shortness of breath", "strength": 0.8},
+        {"symptom": "pain radiating to arm/jaw", "strength": 0.85}
+      ],
+      "urgency_level": "immediate",
+      "likelihood_factors": {
+        "increases": ["age >40", "cardiovascular risk factors", "sudden onset"],
+        "decreases": ["young age without risk factors", "pain that changes with position"]
+      },
+      "recommendation": "Call emergency services (911) immediately. Every minute matters for heart muscle survival."
+    }
+  ]
+  

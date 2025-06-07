@@ -1,0 +1,213 @@
+[
+    {
+      "id": "s1",
+      "name": "Fever",
+      "description": "An abnormally high body temperature, usually accompanied by shivering, headache, and in severe cases, delirium.",
+      "synonyms": ["High temperature", "Pyrexia", "Hyperthermia", "Febrile response"],
+      "body_region": "systemic"
+    },
+    {
+      "id": "s2",
+      "name": "Headache",
+      "description": "Pain in any region of the head. Headaches may occur on one or both sides of the head, be isolated to a certain location, radiate across the head from one point, or have a viselike quality.",
+      "synonyms": ["Cephalgia", "Head pain", "Migraine", "Tension headache"],
+      "body_region": "head"
+    },
+    {
+      "id": "s3",
+      "name": "Cough",
+      "description": "A sudden, often repetitive, spasmodic contraction of the thoracic cavity, resulting in violent release of air from the lungs, and usually accompanied by a distinctive sound.",
+      "synonyms": ["Hacking", "Tussis", "Wheezing"],
+      "body_region": "chest"
+    },
+    {
+      "id": "s4",
+      "name": "Runny nose",
+      "description": "Excess drainage produced by nasal and adjacent tissues and blood vessels in the nose. This drainage may range from a clear fluid to thick mucus.",
+      "synonyms": ["Rhinorrhea", "Nasal discharge", "Nasal drip", "Nose dripping"],
+      "body_region": "head"
+    },
+    {
+      "id": "s5",
+      "name": "Sore throat",
+      "description": "Pain, scratchiness or irritation of the throat that often worsens when you swallow.",
+      "synonyms": ["Pharyngitis", "Throat pain", "Throat irritation", "Painful swallowing"],
+      "body_region": "neck"
+    },
+    {
+      "id": "s6",
+      "name": "Stomach Pain",
+      "description": "Pain or discomfort that occurs in the abdomen, the area between the chest and the pelvis.",
+      "synonyms": ["Abdominal pain", "Belly ache", "Tummy ache", "Gastric pain"],
+      "body_region": "abdomen"
+    },
+    {
+      "id": "s7",
+      "name": "Chest Pain",
+      "description": "Discomfort or pain that you feel anywhere along the front of your body between your neck and upper abdomen.",
+      "synonyms": ["Angina", "Thoracic pain", "Chest discomfort", "Chest pressure"],
+      "body_region": "chest"
+    },
+    {
+      "id": "s8",
+      "name": "Rash",
+      "description": "A temporary eruption on the skin, typically characterized by redness, swelling, and/or itching.",
+      "synonyms": ["Skin eruption", "Hives", "Dermatitis", "Skin irritation"],
+      "body_region": "skin"
+    },
+    {
+      "id": "s9",
+      "name": "Joint Pain",
+      "description": "Discomfort that arises from any joint. It's also called arthralgia.",
+      "synonyms": ["Arthralgia", "Joint ache", "Joint inflammation", "Articular pain"],
+      "body_region": "musculoskeletal"
+    },
+    {
+      "id": "s10",
+      "name": "Fatigue",
+      "description": "A feeling of tiredness, exhaustion, or lack of energy.",
+      "synonyms": ["Exhaustion", "Tiredness", "Lethargy", "Low energy"],
+      "body_region": "systemic"
+    },
+    {
+      "id": "s11",
+      "name": "Dizziness",
+      "description": "A sensation of spinning, whirling, lightheadedness, faintness, or unsteadiness.",
+      "synonyms": ["Vertigo", "Lightheadedness", "Wooziness", "Feeling faint"],
+      "body_region": "head"
+    },
+    {
+      "id": "s12",
+      "name": "Shortness of breath",
+      "description": "A feeling of not getting enough air, difficulty breathing, or breathlessness.",
+      "synonyms": ["Dyspnea", "Breathlessness", "Respiratory distress", "Trouble breathing"],
+      "body_region": "chest"
+    },
+    {
+      "id": "s13",
+      "name": "Nausea",
+      "description": "A feeling of sickness with an inclination to vomit.",
+      "synonyms": ["Queasiness", "Upset stomach", "Sick to stomach", "Feeling sick"],
+      "body_region": "abdomen"
+    },
+    {
+      "id": "s14",
+      "name": "Vomiting",
+      "description": "The forcible voluntary or involuntary emptying of stomach contents through the mouth.",
+      "synonyms": ["Throwing up", "Emesis", "Regurgitation", "Being sick"],
+      "body_region": "abdomen"
+    },
+    {
+      "id": "s15",
+      "name": "Diarrhea",
+      "description": "Loose, watery stools that occur more frequently than usual.",
+      "synonyms": ["Loose stools", "Watery stools", "Frequent bowel movements", "Loose bowels"],
+      "body_region": "abdomen"
+    },
+    {
+      "id": "s16",
+      "name": "Back Pain",
+      "description": "Discomfort or soreness in the back, ranging from a dull, constant ache to a sudden, sharp pain.",
+      "synonyms": ["Backache", "Lumbago", "Spinal pain", "Lumbar pain"],
+      "body_region": "back"
+    },
+    {
+      "id": "s17",
+      "name": "Muscle Pain",
+      "description": "Pain that affects the muscles, often described as aching, cramping, or soreness.",
+      "synonyms": ["Myalgia", "Muscle ache", "Muscle soreness", "Muscular pain"],
+      "body_region": "musculoskeletal"
+    },
+    {
+      "id": "s18",
+      "name": "Swelling",
+      "description": "Enlargement of a body part or area caused by an accumulation of fluid in tissues.",
+      "synonyms": ["Edema", "Inflammation", "Puffiness", "Bloating"],
+      "body_region": "various"
+    },
+    {
+      "id": "s19",
+      "name": "Difficulty swallowing",
+      "description": "Trouble or pain when moving food or liquid from the mouth to the stomach.",
+      "synonyms": ["Dysphagia", "Painful swallowing", "Trouble swallowing", "Choking sensation"],
+      "body_region": "neck"
+    },
+    {
+      "id": "s20",
+      "name": "Blurred vision",
+      "description": "Lack of sharpness of vision resulting in the inability to see fine details.",
+      "synonyms": ["Cloudy vision", "Hazy vision", "Visual disturbance", "Unfocused vision"],
+      "body_region": "head"
+    },
+    {
+      "id": "s21",
+      "name": "Constipation",
+      "description": "Infrequent bowel movements or difficulty passing stools that persists for several weeks or longer.",
+      "synonyms": ["Irregular bowel movements", "Hard stools", "Difficulty defecating", "Bowel obstruction"],
+      "body_region": "abdomen"
+    },
+    {
+      "id": "s22",
+      "name": "Anxiety",
+      "description": "A feeling of worry, nervousness, or unease about something with an uncertain outcome.",
+      "synonyms": ["Nervousness", "Worry", "Apprehension", "Unease"],
+      "body_region": "psychological"
+    },
+    {
+      "id": "s23",
+      "name": "Depression",
+      "description": "Persistent feelings of sadness and loss of interest in activities once enjoyed.",
+      "synonyms": ["Low mood", "Sadness", "Melancholy", "Feeling down"],
+      "body_region": "psychological"
+    },
+    {
+      "id": "s24",
+      "name": "Insomnia",
+      "description": "Difficulty falling asleep or staying asleep, even when a person has the chance to do so.",
+      "synonyms": ["Sleeplessness", "Sleep disorder", "Wakefulness", "Difficulty sleeping"],
+      "body_region": "neurological"
+    },
+    {
+      "id": "s25",
+      "name": "Ear pain",
+      "description": "Discomfort or pain inside or around the ear that can be sharp, dull, or burning.",
+      "synonyms": ["Earache", "Otalgia", "Ear discomfort", "Ear pressure"],
+      "body_region": "head"
+    },
+    {
+      "id": "s26",
+      "name": "Itching",
+      "description": "An uncomfortable sensation on the skin that causes a desire to scratch.",
+      "synonyms": ["Pruritus", "Scratching", "Skin irritation", "Itchy skin"],
+      "body_region": "skin"
+    },
+    {
+      "id": "s27",
+      "name": "Numbness",
+      "description": "A lack of sensation or feeling in a part of the body, often accompanied by tingling.",
+      "synonyms": ["Paresthesia", "Loss of feeling", "Pins and needles", "Sensory loss"],
+      "body_region": "neurological"
+    },
+    {
+      "id": "s28",
+      "name": "Confusion",
+      "description": "A state of being bewildered or unclear in one's mind about something.",
+      "synonyms": ["Disorientation", "Bewilderment", "Mental fog", "Lack of clarity"],
+      "body_region": "neurological"
+    },
+    {
+      "id": "s29",
+      "name": "Palpitations",
+      "description": "Sensations of a fast-beating, fluttering, or pounding heart.",
+      "synonyms": ["Racing heart", "Heart fluttering", "Irregular heartbeat", "Tachycardia"],
+      "body_region": "chest"
+    },
+    {
+      "id": "s30",
+      "name": "Weight loss",
+      "description": "Unintentional decrease in body weight due to loss of body fat, muscle, or fluid.",
+      "synonyms": ["Losing weight", "Decreased body mass", "Slimming", "Wasting"],
+      "body_region": "systemic"
+    }
+  ]
+  
